@@ -160,10 +160,12 @@ $('body').on('click', 'a.close, #fade', function() { //Au clic sur le body...
     });
 
 
-
-
-
-
+// Musique de fond
+document.getElementById("intro").play();
+function sound()
+{  
+  document.getElementById("harvest").play();  
+}
 
 // Ressources
 var pommes = 0;

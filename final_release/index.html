@@ -10,7 +10,7 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 </head>
 <body>
- 
+
 <header>
 	<img src="images/logo.png" alt="logo" onmousedown="return false" id="logo">
 
@@ -38,7 +38,7 @@
 	<div class="fruits">
 
 		<!-- Pommes -->
-		<div class="image_clic">
+		<div class="image_clic" onclick="sound()">
 			<img src="images/sun.png" alt="sun" class="sun back">
 			<img src="images/pomme.png" alt="pomme" onClick="PommeClick(1)" class="img-zoom front" onmousedown="return false">
 		</div>
@@ -49,7 +49,7 @@
 		<span id="prodPomme">0/sec</span>
 
 		<!-- Mangues -->
-		<div class="image_clic">
+		<div class="image_clic" onclick="sound()">
 			<img src="images/sun.png" alt="sun" class="sun back">
 			<img src="images/mangue.png" alt="mangue" onClick="MangueClick(1)" class="img-zoom front" onmousedown="return false">
 		</div>
@@ -60,7 +60,7 @@
 		<span id="prodMangue">0/sec</span>
 
 		<!-- Kiwi -->
-		<div class="image_clic">
+		<div class="image_clic" onclick="sound()">
 			<img src="images/sun.png" alt="sun" class="sun back">
 			<img src="images/kiwi.png" alt="kiwi" onClick="KiwiClick(1)" class="img-zoom front" onmousedown="return false">
 		</div>
@@ -75,7 +75,7 @@
 	<div class="legumes">
 
 		<!-- Carottes -->
-		<div class="image_clic">
+		<div class="image_clic" onclick="sound()">
 			<img src="images/sun.png" alt="sun" class="sun back">
 			<img src="images/carotte.png" alt="carotte" onClick="CarotteClick(1)" class="img-zoom front" onmousedown="return false">
 		</div>
@@ -87,7 +87,7 @@
 	
 		
 		<!-- Choux -->
-		<div class="image_clic">
+		<div class="image_clic" onclick="sound()">
 			<img src="images/sun.png" alt="sun" class="sun back">
 			<img src="images/chou.png" alt="chou" onClick="ChouClick(1)" class="img-zoom front" onmousedown="return false">
 		</div>
@@ -99,7 +99,7 @@
 
 		
 		<!-- Radis -->
-		<div class="image_clic">
+		<div class="image_clic" onclick="sound()">
 			<img src="images/sun.png" alt="sun" class="sun back">
 			<img src="images/radis.png" alt="radis" onClick="RadiClick(1)" class="img-zoom front" onmousedown="return false">
 		</div>
@@ -964,6 +964,14 @@ Remettez les chapeaux et posez les radis dans un plat. Servez frais.</p>
 </div>
 
 </aside>
+
+ <audio id="intro" visibility="hidden">
+        <source src="media/intro.mp3" type="audio/mp3" />
+</audio>
+
+ <audio id="harvest" visibility="hidden">
+        <source src="media/harvest.wav" type="audio/wav" />
+</audio>
 
 <script src="scripts/main.js"></script>	
 
