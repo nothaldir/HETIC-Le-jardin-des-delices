@@ -1,0 +1,377 @@
+/* IMPORTATION DES POLICES */ 
+@font-face {
+  font-family: "Porky";
+  src: url(../fonts/porky.TTF) format("truetype");
+}
+
+/* ELEMENTS GENERAUX ET PAR DEFAULTS */
+body
+{
+	cursor: url("../images/pointer.png"), auto;
+	font-size: 0.8em;
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Raleway', sans-serif;	
+	background-color: #cbebfb;
+}
+
+
+/* HEADER */
+#logo
+{
+	display: block;
+	width: 550px;
+	margin: auto;
+}
+
+header
+{
+	background-image: url(../images/back2.png);
+	background-repeat: no-repeat;
+	background-position: top;
+	background-size: 100%;
+}
+
+header p, header h1
+{
+	padding: 10px;
+}
+
+.ancre
+{
+	padding-top: 50px;
+	display: block;
+	width: 5%;
+	margin: auto;
+	text-align: center;
+	padding-bottom: 450px;
+}
+
+/* ACCUEIL + TUTO */
+
+section
+{
+	width: 800px;
+	margin: auto;
+	text-align: center;	
+	font-family: 'Raleway', sans-serif;	
+	font-size: 1.4em;	
+	margin-top: -50px;
+}
+
+section h1
+{
+	font-family: 'Porky';
+	font-size: 2em;
+	letter-spacing: 0.1em;
+	color: white;
+	text-shadow: #000000 1px 1px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;	
+}
+
+
+/* BANDEAU JEU */
+article
+{
+	text-align: center;	
+	background-image: url(../images/back1.png);
+	background-repeat: no-repeat;
+	background-position: top;
+	background-size: 100%;	
+	padding-top: 50px;
+	height: 1100px;
+	background-color: #57c976;
+}
+
+.ressources, .plateau, .upgrades
+{
+	display: inline-block;
+	vertical-align: text-top;
+	text-align: left;
+}
+
+/* RESSOURCES */
+.ressources
+{
+	margin-top: 40px;
+	width: 350px;
+	text-align: center;
+}
+
+.fruits
+{
+	float: left;
+	margin-left: 30px;
+}
+
+.legumes
+{
+	float: right;
+	margin-right: 70px; 
+}
+
+.image_clic
+{
+	cursor: url("../images/cursor3.png"), pointer;
+	margin-top: 20px;
+}
+
+#plus1
+{
+    display: none;
+    color: white;
+    position: absolute;
+    font-size: 2em;
+    font-family: "Porky";   
+    z-index: 1000; 
+   	text-shadow: #000000 1px 1px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px; 
+	letter-spacing: 0.1em;
+}
+
+.front
+{
+	position: relative;
+}
+
+.back
+{
+	position: absolute;
+}
+
+.img-zoom 
+{
+			width:100px;
+			-webkit-transition: all .1s ease-in-out;
+			-moz-transition: all .1s ease-in-out;
+			-o-transition: all .1s ease-in-out;
+			-ms-transition: all .1s ease-in-out;
+}
+ 
+.transition 
+{
+			-webkit-transform: scale(1.2); 
+			-moz-transform: scale(1.2);
+			-o-transform: scale(1.2);
+			transform: scale(1.2);
+}
+
+.sun
+{
+    width: 100px;
+    -webkit-animation: rotation 8s linear infinite;
+    -moz-animation: rotation 8s linear infinite;
+    -ms-animation: rotation 8s linear infinite;
+}
+
+@-webkit-keyframes rotation 
+{
+    0%   { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+@-moz-keyframes rotation 
+{
+    0%   { -moz-transform: rotate(0deg); }
+    100% { -moz-transform: rotate(360deg); }
+}
+@-ms-keyframes rotation 
+{
+    0%   { -ms-transform: rotate(0deg); }
+    100% { -ms-transform: rotate(360deg); }
+}
+
+/* PLATEAU */
+
+#jardin
+{
+	height: 350px;
+	width: 350px;
+	overflow: auto;
+	background-image: url(../images/cadre.png);
+	background-repeat: no-repeat;
+	background-position: top;
+	background-size: 100%;
+	padding: 89px 92px;
+}
+
+.small
+{
+	width: 10%;
+	margin-right: -8px;
+}
+
+.plateau h2
+{
+	font-family: "Porky";
+	text-align: center;
+	letter-spacing: 0.2em;
+	color: white;
+	text-shadow: #000000 1px 1px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;		
+	padding: 0px;
+	margin: 0px;
+}
+
+
+/* UPGRADES */
+.upgrades
+{
+	width: 350px;	
+	background-image: url(../images/upgrades.png);
+	background-repeat: no-repeat;
+	background-position: top;
+	background-size: 100%;
+	margin-top: 40px;
+	height: 50%;
+}
+
+.up
+{
+	width: 230px;
+	height: 30px;
+	background-color: #c8ad7f;
+	border: 3px solid #8b6c42;
+	border-radius: 5px;
+	margin-left: 52px;
+	margin-top: 5px;
+	font-size: 1.1em;
+	cursor: url("../images/cursor3.png"), pointer;
+	padding-right: 10px;
+	color: white;
+	text-shadow: #000000 1px 1px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;	
+}
+
+.up1
+{
+	margin-top: 133px;
+}
+
+.up img
+{
+	width: 10%;
+}
+
+.upgrades h3
+{
+	display: inline-block;
+	font-family: 'Porky';
+	margin: 0px;
+	padding: 0px;
+	letter-spacing: 0.2em;
+	margin-left: 10px;
+}
+
+.arrow_down
+{
+	float: right;
+}
+
+h4
+{
+	padding: 0px;
+	margin: 0px;
+}
+
+.amelio
+{
+	position: absolute;
+	margin-left: 15px;
+	background-color: #c8ad7f;
+	border: 3px solid #8b6c42;
+	border-radius: 5px;
+	width: 307px;
+	height: 130px;
+	display: none;
+	text-align: center;
+	margin-top: -3px;
+	opacity: 0.96;
+}
+
+.info
+{
+	display: inline-block;
+	vertical-align: text-top;
+	text-align: center;
+	width: 100px;
+}
+
+.amelio img
+{
+	width: 50%;
+}
+
+.info img
+{
+	cursor: url("../images/cursor3.png"), pointer;	
+}
+
+
+
+
+/* POP-UPS */
+
+#fade { /*--Masque opaque noir de fond--*/
+	display: none; /*--masqué par défaut--*/
+	background: #000;
+	position: fixed; left: 0; top: 0;
+	width: 100%; height: 100%;
+	opacity: .80;
+	z-index: 9999;
+}
+
+.popup_block{
+	display: none; /*--masqué par défaut--*/
+	background: rgba(255, 255, 255, 0.9);
+	padding: 10px;
+	border: 10px solid #ddd;
+	float: left;
+	font-size: 1.2em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	/*--Les différentes définitions de Box Shadow en CSS3--*/
+	-webkit-box-shadow: 0px 0px 20px #000;
+	-moz-box-shadow: 0px 0px 20px #000;
+	box-shadow: 0px 0px 20px #000;
+	/*--Coins arrondis en CSS3--*/
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	height: 430px;
+	overflow: auto;
+}
+
+.popup_block h3
+{
+	font-family: 'Porky';
+	letter-spacing: 0.1em;
+	text-align: center;
+	font-size: 1.5em;
+}
+
+.popup_block img
+{
+	width: 40%;
+	display: block;
+	margin: auto;
+}
+
+#recette p
+{
+	text-align: left;
+}
+
+.popup_block p, .popup_block h2
+{
+	text-align: center;
+}
+
+/*--Gérer la position fixed pour IE6--*/
+*html #fade {
+position: absolute;
+}
+*html .popup_block {
+position: absolute;
+}
+
+.hide
+{
+	display:none;
+}

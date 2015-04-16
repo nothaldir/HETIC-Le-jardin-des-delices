@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Le Jardin des Délices</title>
+	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <link rel="stylesheet" href="styles/app.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+</head>
+<body>
+ 
+<header>
+	<img src="images/logo.png" alt="logo" onmousedown="return false" id="logo">
+
+<section class="accueil">
+	<h1>Bienvenue !</h1>
+	<p>Tu n’aimes pas les légumes verts ?
+	</br>On a LE jeu fait pour toi. </p>
+	<p>Règles :
+	</br>Clique sur les fruits ou légumes qui te semblent bons et récoltes-les. Achète par la suite des améliorations et débloque de supers recettes ! Rien n’est joué d’avance alors fais bien attention.	</p>
+	<p>Alors qu’attends-tu ?
+	</br>Démarre !</p>
+</section>
+
+<a href="#game" class="ancre"><img src="images/down.png" alt="scroll" ></a>
+
+</header>
+
+
+<article id="game">
+
+	<span id="plus1"></span>
+
+	<div class="ressources" >
+
+	<div class="fruits">
+
+		<!-- Pommes -->
+		<div class="image_clic">
+			<img src="images/sun.png" alt="sun" class="sun back">
+			<img src="images/pomme.png" alt="pomme" onClick="PommeClick(1)" class="img-zoom front" onmousedown="return false">
+		</div>
+
+		<span>Total :</span>
+		<span id="pommes"></span>
+		<span><br/>Production: </span>
+		<span id="prodPomme">0/sec</span>
+
+		<!-- Mangues -->
+		<div class="image_clic">
+			<img src="images/sun.png" alt="sun" class="sun back">
+			<img src="images/mangue.png" alt="mangue" onClick="MangueClick(1)" class="img-zoom front" onmousedown="return false">
+		</div>
+
+		<span>Total :</span>
+		<span id="mangues"></span>
+		<span><br/>Production: </span>
+		<span id="prodMangue">0/sec</span>
+
+		<!-- Kiwi -->
+		<div class="image_clic">
+			<img src="images/sun.png" alt="sun" class="sun back">
+			<img src="images/kiwi.png" alt="kiwi" onClick="KiwiClick(1)" class="img-zoom front" onmousedown="return false">
+		</div>
+
+		<span>Total :</span>
+		<span id="kiwis"></span>
+		<span><br/>Production: </span>
+		<span id="prodKiwi">0/sec</span>	
+
+	</div>
+
+	<div class="legumes">
+
+		<!-- Carottes -->
+		<div class="image_clic">
+			<img src="images/sun.png" alt="sun" class="sun back">
+			<img src="images/carotte.png" alt="carotte" onClick="CarotteClick(1)" class="img-zoom front" onmousedown="return false">
+		</div>
+
+		<span>Total :</span>
+		<span id="carottes"></span>
+		<span><br/>Production: </span>
+		<span id="prodCarotte">0/sec</span>
+	
+		
+		<!-- Choux -->
+		<div class="image_clic">
+			<img src="images/sun.png" alt="sun" class="sun back">
+			<img src="images/chou.png" alt="chou" onClick="ChouClick(1)" class="img-zoom front" onmousedown="return false">
+		</div>
+
+		<span>Total :</span>
+		<span id="choux"></span>
+		<span><br/>Production: </span>
+		<span id="prodChou">0/sec</span>
+
+		
+		<!-- Radis -->
+		<div class="image_clic">
+			<img src="images/sun.png" alt="sun" class="sun back">
+			<img src="images/radis.png" alt="radis" onClick="RadiClick(1)" class="img-zoom front" onmousedown="return false">
+		</div>
+
+		<span>Total :</span>
+		<span id="radis"></span>
+		<span><br/>Production: </span>
+		<span id="prodRadi">0/sec</span>			
+
+	</div>
+
+	</div>
+
+
+
+
+	<!-- Plateau jardin -->
+	<div class="plateau">
+		<h2>Mon Jardin</h2>
+		<div id="jardin"></div>	
+		<h2 id="total">Total : 0</h2>
+	</div>
+
+
+
+
+	<!-- UPGRADES -->
+	<div class="upgrades">
+
+		<!-- POMME -->
+		<div class="up up1">
+			<img src="images/pomme.png" alt="pomme">
+			<h3>LA POMME</h3>
+			<img src="images/down2.png" alt="arrow" class="arrow_down arrow_down1">
+		</div>
+		<div class="amelio amelio1"> 
+			<div class="info">
+				<a href="#?w=500" rel="popup_1" class="poplight" id="check1">
+					<img src="images/potager.png" alt="potager" onClick="clickPotagerPomme()">
+				</a>
+				<h4>Potager</h4>
+				<div>1/seconde</div>
+				<div id="potagerPomme">Quantité : 0</div>
+				<div id="potagerPommeCost">Coût : 10</div>
+			</div>
+			<div class="info">
+				<a href="#?w=500" rel="popup_2" class="poplight" id="check2">
+					<img src="images/champ.png" alt="champ" onClick="clickChampPomme()">
+				</a>	
+				<h4>Champ</h4>
+				<div>2/seconde</div>
+				<div id="champPomme">Quantité : 0</div>
+				<div id="champPommeCost">Coût : 100</div>
+			</div>
+			<div class="info">
+				<a href="#?w=500" rel="popup_3" class="poplight" id="check3">
+					<img src="images/exploitation.png" alt="exploitation" onClick="clickExploitPomme()">
+				</a>
+				<h4>Exploitation</h4>
+				<div>4/seconde</div>
+				<div id="exploitPomme">Quantité : 0</div>
+				<div id="exploitPommeCost">Coût : 300</div>				
+			</div>			
+		</div>
+
+		<!-- CAROTTE -->
+		<div class="up up2">
+			<img src="images/carotte.png" alt="carotte">
+			<h3>LA CAROTTE</h3>
+			<img src="images/down2.png" alt="arrow" class="arrow_down">
+		</div>
+		<div class="amelio amelio2"> 
+			<div class="info">
+				<a href="#?w=500" rel="popup_4" class="poplight" id="check4">
+					<img src="images/potager.png" alt="potager" onClick="clickPotagerCarotte()">
+				</a>
+				<h4>Potager</h4>
+				<div>1/seconde</div>
+				<div id="potagerCarotte">Quantité : 0</div>
+				<div id="potagerCarotteCost">Coût : 10</div>
+			</div>
+			<div class="info">
+				<a href="#?w=500" rel="popup_5" class="poplight" id="check5">
+					<img src="images/champ.png" alt="champ" onClick="clickChampCarotte()">
+				</a>
+				<h4>Champ</h4>
+				<div>2/seconde</div>
+				<div id="champCarotte">Quantité : 0</div>
+				<div id="champCarotteCost">Coût : 100</div>
+			</div>
+			<div class="info">
+				<a href="#?w=500" rel="popup_6" class="poplight" id="check6">
+					<img src="images/exploitation.png" alt="exploitation" onClick="clickExploitCarotte()">
+				</a>
+				<h4>Exploitation</h4>
+				<div>4/seconde</div>
+				<div id="exploitCarotte">Quantité : 0</div>
+				<div id="exploitCarotteCost">Coût : 300</div>				
+			</div>		
+		</div>		
+
+		<!-- MANGUE -->
+		<div class="up up3">
+			<img src="images/mangue.png" alt="mangue">
+			<h3>LA MANGUE</h3>
+			<img src="images/down2.png" alt="arrow" class="arrow_down">
+		</div>
+		<div class="amelio amelio3"> 
+			<div class="info">
+				<a href="#?w=500" rel="popup_7" class="poplight" id="check7">
+					<img src="images/potager.png" alt="potager" onClick="clickPotagerMangue()">
+				</a>
+				<h4>Potager</h4>
+				<div>1/seconde</div>
+				<div id="potagerMangue">Quantité : 0</div>
+				<div id="potagerMangueCost">Coût : 10</div>
+			</div>
+			<div class="info">
+				<a href="#?w=500" rel="popup_8" class="poplight" id="check8">	
+					<img src="images/champ.png" alt="champ" onClick="clickChampMangue()">
+				</a>
+				<h4>Champ</h4>
+				<div>2/seconde</div>
+				<div id="champMangue">Quantité : 0</div>
+				<div id="champMangueCost">Coût : 100</div>
+			</div>
+			<div class="info">
+				<a href="#?w=500" rel="popup_9" class="poplight" id="check9">
+					<img src="images/exploitation.png" alt="exploitation" onClick="clickExploitMangue()">
+				</a>
+				<h4>Exploitation</h4>
+				<div>4/seconde</div>
+				<div id="exploitMangue">Quantité : 0</div>
+				<div id="exploitMangueCost">Coût : 300</div>				
+			</div>	
+		</div>				
+
+		<!-- CHOU -->
+		<div class="up up4">
+			<img src="images/chou.png" alt="chou">
+			<h3>LE CHOU</h3>
+			<img src="images/down2.png" alt="arrow" class="arrow_down">
+		</div>		
+		<div class="amelio amelio4"> 
+			<div class="info">
+				<a href="#?w=500" rel="popup_10" class="poplight" id="check10">
+					<img src="images/potager.png" alt="potager" onClick="clickPotagerChou()">
+				</a>
+				<h4>Potager</h4>
+				<div>1/seconde</div>
+				<div id="potagerChou">Quantité : 0</div>
+				<div id="potagerChouCost">Coût : 10</div>
+			</div>
+			<div class="info">
+				<a href="#?w=500" rel="popup_11" class="poplight" id="check11">
+					<img src="images/champ.png" alt="champ" onClick="clickChampChou()">
+				</a>
+				<h4>Champ</h4>
+				<div>2/seconde</div>
+				<div id="champChou">Quantité : 0</div>
+				<div id="champChouCost">Coût : 100</div>
+			</div>
+			<div class="info">
+				<a href="#?w=500" rel="popup_12" class="poplight" id="check12">
+					<img src="images/exploitation.png" alt="exploitation" onClick="clickExploitChou()">
+				</a>
+				<h4>Exploitation</h4>
+				<div>4/seconde</div>
+				<div id="exploitChou">Quantité : 0</div>
+				<div id="exploitChouCost">Coût : 300</div>				
+			</div>	
+		</div>		
+
+		<!-- KIWI -->
+		<div class="up up5">
+			<img src="images/kiwi.png" alt="kiwi">
+			<h3>LE KIWI</h3>
+			<img src="images/down2.png" alt="arrow" class="arrow_down arrow_down5">
+		</div>	
+		<div class="amelio amelio5"> 
+			<div class="info">
+				<a href="#?w=500" rel="popup_13" class="poplight" id="check13">
+					<img src="images/potager.png" alt="potager" onClick="clickPotagerKiwi()">
+				</a>
+				<h4>Potager</h4>
+				<div>1/seconde</div>
+				<div id="potagerKiwi">Quantité : 0</div>
+				<div id="potagerKiwiCost">Coût : 10</div>
+			</div>
+			<div class="info">
+				<a href="#?w=500" rel="popup_14" class="poplight" id="check14">
+					<img src="images/champ.png" alt="champ" onClick="clickChampKiwi()">
+				</a>
+				<h4>Champ</h4>
+				<div>2/seconde</div>
+				<div id="champKiwi">Quantité : 0</div>
+				<div id="champKiwiCost">Coût : 100</div>
+			</div>
+			<div class="info">
+				<a href="#?w=500" rel="popup_15" class="poplight" id="check15">
+					<img src="images/exploitation.png" alt="exploitation" onClick="
+				clickExploitKiwi()">
+				</a>
+				<h4>Exploitation</h4>
+				<div>4/seconde</div>
+				<div id="exploitKiwi">Quantité : 0</div>
+				<div id="exploitKiwiCost">Coût : 300</div>				
+			</div>	
+		</div>			
+
+		<!-- RADIS -->
+		<div class="up up6">
+			<img src="images/radis.png" alt="radis">
+			<h3>LE RADIS</h3>
+			<img src="images/down2.png" alt="arrow" class="arrow_down">
+		</div>		
+		<div class="amelio amelio6"> 
+			<div class="info">
+				<a href="#?w=500" rel="popup_16" class="poplight" id="check16">
+					<img src="images/potager.png" alt="potager" onClick="clickPotagerRadi()">
+				</a>
+				<h4>Potager</h4>
+				<div>1/seconde</div>
+				<div id="potagerRadi">Quantité : 0</div>
+				<div id="potagerRadiCost">Coût : 10</div>
+			</div>
+			<div class="info">
+				<a href="#?w=500" rel="popup_17" class="poplight" id="check17">
+					<img src="images/champ.png" alt="champ" onClick="clickChampRadi()">
+				</a>
+				<h4>Champ</h4>
+				<div>2/seconde</div>
+				<div id="champRadi">Quantité : 0</div>
+				<div id="champRadiCost">Coût : 100</div>
+			</div>
+			<div class="info">
+				<a href="#?w=500" rel="popup_18" class="poplight" id="check18">	
+					<img src="images/exploitation.png" alt="exploitation" onClick="clickExploitRadi()">
+				</a>
+				<h4>Exploitation</h4>
+				<div>4/seconde</div>
+				<div id="exploitRadi">Quantité : 0</div>
+				<div id="exploitRadiCost">Coût : 300</div>				
+			</div>	
+		</div>		
+
+	</div>
+
+</article>
+
+<aside>
+
+	<div id="popup_1" class="popup_block always_hide"> 	
+	<!-- Code HTML de ma fenêtre avec la relation rel/id !-->
+
+		<h2>Bravo, tu as débloqué ta première recette : </h2> 
+		<p><i><strong>"Mange une pomme par jour pour éloigner le médecin !"</strong></i></p>		
+			<h3>La super compote de pomme</h3>
+			<img src="images/recettes/POMME compote.jpg" alt="">
+		<p>N'hésite pas à aller voir ton papa ou ta maman pour la préparer en toute sécurité.</p>
+		
+		<button>Voir la recette</button>
+		<div class="hide" id="recette">
+		<h5>Ingrédients (pour 6 personnes)</h5>
+				<ul>
+					<li>1 kg de pommes (à cidre de préférence)</li>
+					<li>1 jus de citron</li>
+					<li>1 gousse de vanille ou sucre vanillé</li>
+				</ul>
+
+		<h5>Préparation</h5>
+		<p>Eplucher les pommes, enlever le coeur avec les pépins et les couper en quartiers.
+
+Verser un petit verre de jus de citron dans une casserole, remplir la casserole avec les pommes. Ajouter la gousse de vanille fendue et grattée pour récupérer les petites graines noires.
+
+Faire cuire le plus longtemps possible sur feux doux, environ 1 h30.
+
+La compote est prête quand elle est rougeâtre et commence à accrocher. Il faut remuer souvent.
+
+Quand elle a un peu refroidie, je la passe au mixer pour avoir une compote sans morceaux, ayant un peu l'apparence d'une mousse.
+		</p>
+
+		</div>
+ 	</div>
+
+<div id="popup_2" class="popup_block always_hide"> 	<!-- Code HTML de ma fenêtre avec la relation rel/id !-->
+
+		<h2>Bravo tu a débloqué une recette : </h2>
+		<h3>La tarte aux pommes</h3>
+		<img src="images/recettes/POMME tarte.jpg" alt="">
+		<p>N'hésite pas à aller voir ton papa ou ta maman pour la préparer en toute sécurité.</p>
+
+			<button>Voir la recette</button>
+<div class="hide" id="recette">
+	<h5>Ingrédients (Pour 6 personnes)</h5>
+				<ul>
+					<li>40 g de beurre demi-sel de bonne qualité, fondu</li>
+					<li>40 g de sucre de canne blond non raffiné</li>
+					<li>1 pâte feuilletée facile et rapide (vous pouvez en prendre une toute faite pur beurre, mais ce sera vraiment meilleur avec la pâte maison)</li>
+					<li>3 petites pommes, environ 450 g, pelées, évidées, et coupées finement en cercles</li>
+				</ul>
+
+				<h5>Préparation</h5>
+				<p>Préchauffez le four à 175°C.
+
+Chemisez une plaque de four avec du papier sulfurisé et utilisez la moitié du beurre fondu pour beurrer un disque de 25 cm. Saupoudrez cette zone avec la moitié du sucre.
+
+Etalez la pâte sur un plan de travail légèrement fariné jusqu'à pouvoir découper un cercle de 25 cm de diamètre en vous aidant d'un moule à gâteau ou d'une assiette retournée. (Empilez les chutes de pâte, et mettez-les au frais bien emballées pour en faire des palmiers par exemple)
+
+Transférez le cercle de pâte sur la plaque de four en la déposant précisément sur la zone beurrée et sucrée.
+
+Disposez les tranches de pomme en rosace sur la pâte, en commençant depuis l'extérieur et en laissant une marge d'environ 1,5 cm tout autour. Badigeonnez la marge de pâte et les pommes avec le reste du beurre.
+
+Mettez au four et faites cuire 30 minutes, jusqu'à ce que les pommes soient tendres quand on les teste avec la pointe d'un couteau.
+
+Saupoudrez du reste du sucre, et passez sous le grill 2 minutes, en surveillant attentivement, jusqu'à ce que le sucre soit caramélisé.
+Servez tiède ou à température ambiante et régalez-vous ;)</p>
+
+</div>
+</div>
+
+<div id="popup_3" class="popup_block always_hide"> 	<!-- Code HTML de ma fenêtre avec la relation rel/id !-->
+
+		<h2>Bravo tu a débloqué une recette : </h2>
+		<h3>Le délicieux crumble aux pommes</h3>
+		<img src="images/recettes/POMME crumble.jpg" alt="">
+		<p>N'hésite pas à aller voir ton papa ou ta maman pour la préparer en toute sécurité.</p>
+
+			<button>Voir la recette</button>
+<div class="hide" id="recette">
+	<h5>Ingrédients</h5>
+				<ul>
+					<li>6 belles pommes (des Canada par exemple)</li>
+					<li>150 g de cassonade</li>
+					<li>150 g de farine de blé</li>
+					<li>125 g de beurre (le sortir 1/2 heure avant de commencer la recette)</li>
+					<li>1 petite cuillère de cannelle en poudre</li>
+					<li>1 sachet de sucre vanillé</li>
+					<li>le jus d'un citron</li>
+				</ul>
+
+				<h5>Préparation</h5>
+				<p>Préchauffer le four à thermostat 7 (210°C).
+
+Peler, évider et découper les pommes en cubes grossiers, les répartir dans un plat allant au four, verser dessus le jus du citron, la cannelle et le sucre vanillé.
+
+Dans un saladier, mélanger la farine et la cassonade. Puis ajouter le beurre en petits cubes et mélanger à la main de façon à former une pâte grumeleuse.
+
+Émietter cette pâte au dessus des pommes de façon à les recouvrir. Mettre au four une bonne 1/2 heure.
+
+Servir tiède avec de la crème fouettée ou de la glace à la vanille.
+			</p>
+</div>
+</div>
+
+<div id="popup_4" class="popup_block always_hide"> 	<!-- Code HTML de ma fenêtre avec la relation rel/id !-->
+
+		<h2>Bravo tu a débloqué une recette :</h2> 
+		<p><i><strong>"Mange des carottes pour mieux voir la nuit !"</strong></i></p>
+		<h3>Une belle et bonne soupe de carotte !</h3>
+		<img src="images/recettes/CAROTTE soupe.jpg" alt="">
+		<p>N'hésite pas à aller voir ton papa ou ta maman pour la préparer en toute sécurité.</p>
+
+			<button>Voir la recette</button>
+<div class="hide" id="recette">
+	<h5>Ingrédients pour 6 personnes</h5>
+				<ul>
+					<li>1kgs de carottes</li>
+					<li>2 oignons</li>
+					<li>5 c. à soupe de crème fraîche allégée à 5% de MG</li>
+					<li>4 c. à soupe d'huile d'olive</li>
+					<li>Sel, poivre</li>
+				</ul>
+
+				<h5>Préparation</h5>
+				<p>1. Pelez et hachez les oignons. Epluchez les carottes et râpez-les.</p>
+				<p>2. Dans une cocotte, faites chauffer l'huile et faites-y revenir l’oignon.</p>
+				<p>3. Ajoutez les carottes râpées et laissez cuire 5 min en mélangeant.</p>
+				<p>4. Versez 1,5 l d’eau dans la cocotte, couvrez et faites cuire 15 min. Au bout des 15 min, retirez la cocotte du feu et laissez tiédir.</p>
+				<p>5. Ensuite, mixez jusqu’à obtention d’une soupe veloutée. Salez, poivrez. Incorporez la crème fraîche en mélangeant puis remettez sur feu doux quelques min. Retirez du feu et serve-le. C'est beau mais c'es chaud !</p>
+</div>
+</div>
+
+<div id="popup_5" class="popup_block always_hide"> 	<!-- Code HTML de ma fenêtre avec la relation rel/id !-->
+
+		<h2>Bravo tu a débloqué une recette : </h2><h3>Salade de carottes sauce thaï</h3>
+		<img src="images/recettes/CAROTTES rappées.jpg" alt="">
+		<p>N'hésite pas à aller voir ton papa ou ta maman pour la préparer en toute sécurité.</p>
+
+			<button>Voir la recette</button>
+<div class="hide" id="recette">
+	<h5>Ingrédients pour 2 personnes</h5>
+				<ul>
+					<li>3 grosses carottes</li>
+					<li>2 cuillères à café rases de gingembre frais râpé</li>
+					<li>de la menthe ciselée (une dizaine de feuilles)</li>
+					<li>2 cuillères à café de sucre en poudre</li>
+					<li>2 cuillères à café d’oignon ou échalote très finement émincé</li>
+					<li>2 cuillères à soupe d’assaisonnement de vinaigre de riz complet</li>
+					<li>2 cuillères à soupe d’huile de colza</li>
+					<li>un filet de jus de citron vert</li>
+				</ul>
+
+				<h5>Préparation</h5>
+				<p>1. Râper les carottes et les mettres dans un récipient avec couvercle</p>
+				<p>2. Préparer la sauce : mélanger le sucre avec le vinaigre de riz et le jus de citron, puis ajouter l’huile, l’oignon, le gingembre et la menthe. Mélanger.</p>
+				<p>3. Verser la sauce sur les carottes, fermer le récipient et laisser 2h au réfrigérateur avant de servir.</p>
+				<p>4. Comme accompagnement, je vous recommande ces pains aux légumes qualité crudité……leur goût se marie parfaitement à cette salade de carottes râpées ! Alors, n’hésitez pas à vous faire plaisir !</p>
+</div>
+</div>
+
+<div id="popup_6" class="popup_block always_hide"> 	<!-- Code HTML de ma fenêtre avec la relation rel/id !-->
+
+		<h2>Bravo tu a débloqué une recette : </h2>
+		<h3>Un super carrot cake</h3>
+		<img src="images/recettes/CAROTTE cake.jpg" alt="">
+		<p>N'hésite pas à aller voir ton papa ou ta maman pour la préparer en toute sécurité.</p>
+
+			<button>Voir la recette</button>
+<div class="hide" id="recette">
+	<h5>Ingrédients pour 6 personnes</h5>
+				<ul>
+					<li>350gr de sucre en poudre</li>
+					<li>275gr de carottes rapées</li>
+					<li>30cl d'huile de tournesol</li>
+					<li>4 oeufs</li>
+					<li>1 c. à café d'extrait de vanille</li>
+					<li>2 c. à café rases de levure chimique</li>
+					<li>3 c. à café rases de cannelle</li>
+					<li>2 c. à café rases de gingembre en poudre</li>
+				</ul>
+
+				<h5>Préparation</h5>
+				<p>1. Préchauffez le four th.6 (180°C).</p>
+				<p>2. Beurrez un moule de 25 cm de diamètre.</p>
+				<p>3. Dans un grand saladier, mélangez tous les ingrédients secs.</p>
+				<p>4. Ajoutez l'huile et mélangez le tout au batteur électrique. Incorporez les carottes râpées, les œufs et l'extrait de vanille.</p>
+				<p>5. Versez dans le moule et enfourner 50 min, servez tiède et faites vous plaisir !</p>
+</div>
+</div>
+
+<div id="popup_7" class="popup_block always_hide"> 	<!-- Code HTML de ma fenêtre avec la relation rel/id !-->
+
+		<h2>Bravo tu a débloqué une recette : </h2>
+		<p><i><strong>"Mange des mangues pour rester en bonne santé super longtemps !"</strong></i></p>
+
+		<h3>Le merveilleux tiramisù à la mangue</h3>
+		<img src="images/recettes/MANGUE tiramisu.jpg" alt="">
+		<p>N'hésite pas à aller voir ton papa ou ta maman pour la préparer en toute sécurité.</p>
+			<button>Voir la recette</button>
+<div class="hide" id="recette">
+	<h5>Ingrédients pour 8 personnes</h5>
+				<ul>
+					<li>6 oeufs</li>
+					<li>500 g de mascarpone</li>
+					<li>150 g de sucre</li>
+					<li>2 mangues coupées en cubes</li>
+					<li>30 boudoirs</li>
+					<li>Liqueur de mangue</li>
+				</ul>
+
+				<h5>Préparation</h5>
+				<p>Séparer les blancs des jaunes d'oeufs.
+
+Monter les blancs en neige avec une pincée de sel.
+
+Mélanger les jaunes avec le sucre jusqu'à ce que le mélange blanchisse.
+
+Ajouter le mascarpone puis incoporer les blancs.
+
+Préparer un sirop avec les proportions : 1/3 liqueur de mangue, 2/3 eau.
+
+Imbiber les boudoirs dans celui-ci et les diposer dans un plat.
+
+Ajouter la moitié des morceaux de mangues, puis la moitié du mélange oeufs-mascarpone.
+
+Reformer un rang de boudoirs, puis de mangues, puis de mélange.
+
+Placer au réfrigérateur plusieurs heures puis régalez-vous ! On sait que ce sera difficile mais pourquoi ne pas retourner jouer en attendant ? ;)
+</p>
+
+</div>
+</div>
+
+<div id="popup_8" class="popup_block always_hide"> 	<!-- Code HTML de ma fenêtre avec la relation rel/id !-->
+
+		<h2>Bravo tu a débloqué une recette : </h2>
+		<h3>Mousse légère au coulis délicieux de mangue</h3>
+		<img src="images/recettes/MANGUE mousse.jpg" alt="">
+		<p>N'hésite pas à aller voir ton papa ou ta maman pour la préparer en toute sécurité.</p>
+
+			<button>Voir la recette</button>
+<div class="hide" id="recette">
+	<h5>Ingrédients pour 4 personnes</h5>
+				<ul>
+					<li>500 g de petits suisses à 20 % (ou du fromage blanc)</li>
+					<li>2 cuillères à soupe d'édulcorant</li>
+					<li>2 blancs d'oeuf</li>
+					<li>1 cuillère à café d'extrait de vanille</li>
+					<li>1 grosse mangue</li>
+					<li>le jus d'1/2 citron</li>
+				</ul>
+
+				<h5>Préparation</h5>
+				<p>1. Montez les blancs d'oeufs en neige bien ferme. Battez les petits suisses avec la vanille et l'édulcorant. Ajoutez les blancs en neige, mélangez délicatement. Réservez au frais.</p>
+				<p>2. Epluchez la mangue et coupez-la en morceaux. Mettez-les dans le bol du blender avec le jus de citron, mixez jusqu'à obtention d'un coulis homogène. Si c'est nécessaire vous pouvez ajouter un peu d'édulcorant.</p>
+				<p>3. Dans 4 verrines, disposez la mousse aux petits suisses jusqu'aux deux tiers. Versez dessus le coulis de mangue. Décorez avec une rondelle de kiwi. Ne restes plus qu'à le dévorer !</p>
+
+</div>
+</div>
+
+<div id="popup_9" class="popup_block  always_hide"> 	<!-- Code HTML de ma fenêtre avec la relation rel/id !-->
+
+		<h2>Bravo tu a débloqué une recette : </h2>
+		<h3>La tarte tatin aux mangues</h3>
+		<img src="images/recettes/MANGUE tatin.jpg" alt="">
+		<p>N'hésite pas à aller voir ton papa ou ta maman pour la préparer en toute sécurité.</p>
+
+			<button>Voir la recette</button>
+<div class="hide" id="recette">
+	<h5>Ingrédients</h5>
+				<ul>
+					<li>450 g de tranches de mangues</li>
+					<li>1  pâte feuilletée pur beurre</li>
+					<li>300 g de sorbet noix de coco</li>
+					<li>100 g de sucre</li>
+					<li>5 cl d’eau</li>
+					<li>½ cuil. à café de vanille liquide</li>
+					<li>15 g de beurre demi-sel</li>
+					<li>quelques gouttes de jus de citron vert</li>
+				</ul>
+
+				<h5>Préparation</h5>
+				<p>1. Préchauffez le four à 180°C (th 6).</p>
+				<p>2. Faites fondre dans une casserole 100 g de sucre additionné à 5 cl d’eau et à quelques gouttes de jus de citron vert jusqu’à obtention d’un caramel mousseux.</p>
+				<p>3. Coupez alors le feu et ajoutez 15 g de beurre demi-sel en petits dés et ½ cuil à café de vanille liquide.</p>
+				<p>4. Versez immédiatement la préparation dans le fond d’un moule à manqué et répartissez bien.</p>
+				<p>5. Coupez chaque quartier de mangue en 3 lamelles et déposez-les en rosace sur le caramel</p>
+				<p>6. Couvrez avec la pâte feuilletée bien froide dont vous rentrerez les bords sous les mangues.</p>
+				<p>7. Piquez le dessus à la fourchette et enfournez pour 40 min.</p>
+				<p>8. Démoulez immédiatement à la sortie du four.</p>
+				<p>9. Servez tiède avec une quenelle de sorbet noix de coco pour se dépayser jusqu'au bout.</p>
+</div>
+</div>
+
+<div id="popup_10" class="popup_block  always_hide"> 	<!-- Code HTML de ma fenêtre avec la relation rel/id !-->
+
+		<h2>Bravo tu a débloqué une recette :</h2> 
+		<p><i><strong>"Mange du chou, il est ton bouclier contre les vilains rhumes et te permet de garder la forme toute l'année !"</strong></i></p>
+
+		<h3>Salade de chou</h3>
+		<img src="images/recettes/CHOU salade.jpg" alt="">
+		<p>N'hésite pas à aller voir ton papa ou ta maman pour la préparer en toute sécurité.</p>
+			<button>Voir la recette</button>
+<div class="hide" id="recette">
+	<h5>Ingrédients pour 2 personnes</h5>
+				<ul>
+					<li>15ml de sucre</li>
+					<li>60ml de vinaigre blanc</li>
+					<li>60ml d'huile végétale</li>
+					<li>2,5ml de sel d'oignon</li>
+					<li>2,5ml de poudre d'ail</li>
+					<li>1,5 litres de chou émincé finement</li>
+					<li>250ml de carottes râpées</li>
+					<li>Sel, poivre</li>
+				</ul>
+
+				<h5>Préparation</h5>
+				<p>Dans un bol, mélanger tous les ingrédients de la vinaigrette. Saler et poivrer. Incorporer le chou et les carottes. Réfrigérer 1 heure avant de servir pour permettre à toutes les saveurs de bien s'amalgamer.</p>
+
+</div>
+</div>
+
+<div id="popup_11" class="popup_block  always_hide"> 	<!-- Code HTML de ma fenêtre avec la relation rel/id !-->
+
+		<h2>Bravo tu a débloqué une recette : </h2>
+		<h3>Potée au choux et saucisse de Morteaux</h3>
+		<img src="images/recettes/CHOU potée.jpg" alt=""><p>N'hésite pas à aller voir ton papa ou ta maman pour la préparer en toute sécurité.</p>
+
+			<button>Voir la recette</button>
+<div class="hide" id="recette">
+	<h5>Ingrédients pour 8 personnes</h5>
+				<ul>
+					<li>1 choux vert</li>
+					<li>8 pommes de terre</li>
+					<li>1 oignon</li>
+					<li>2 saucisses de Morteau</li>
+					<li>3 saucisses de Montbéliard</li>
+					<li>1 rôti de porc fumé</li>
+					<li>1 barquette de lardons fumé type allumette</li>
+					<li>2 bouquets garnis</li>
+					<li>20cl de crème</li>
+					<li>10cl de vin blanc</li>
+					<li>10 cuillères à soupe d'huile d'olive</li>
+					<li>Sel, poivre</li>
+				</ul>
+
+				<h5>Préparation</h5>
+				<p>Preparer le choux : couper le en fine lamelles et le faire blanchir dans de l'eau bouillante pendant 15 à 30 minutes En attendant préparer la cuisson de la viande.
+
+Epelucher et emincer l'oignon.
+
+Epelucher et couper en 4 les pommes de terres.
+
+Dans une grosse cocotte minute, insérer l'huile d'olive et faire dorer l'oignon. Incorporer les lardons, les saucisses de morteaux et montbéliard ainsi que le roti fumé préalablement coupé en tranches. Faire dorer le tout pendant 10 minutes.
+
+Une fois la viande dorée, ajouter les pommes de terres ainsi que le choux blanchi. Saler, poivrer ajouter les bouquet garnis.
+
+laisser cuire le tout cocotte fermé au minimum 1h00.
+
+Une fois cuit placer le tout dans un plat et ajouter y la crème.</p>
+
+</div>
+</div>
+
+<div id="popup_12" class="popup_block  always_hide"> 	<!-- Code HTML de ma fenêtre avec la relation rel/id !-->
+
+		<h2>Bravo tu a débloqué une recette : </h2>
+
+		<h3>Le gratin de chou-fleur croustillant </h3>
+		<img src="images/recettes/POMME compote.jpg" alt="">
+		<p>N'hésite pas à aller voir ton papa ou ta maman pour la préparer en toute sécurité.</p>
+
+			<button>Voir la recette</button>
+<div class="hide" id="recette">
+	<h5>Ingrédients pour 6 personnes</h5>
+				<ul>
+					<li>1kg de chou-fleur</li>
+					<li>30-40g de beurre</li>
+					<li>30g de farine</li>
+					<li>40cl de lait</li>
+					<li>2 jaunes d'oeufs</li>
+					<li>50g de gruyère râpé + 50g de parmesan râpé</li>
+					<li>50g de chapelure</li>
+					<li>noix de muscade</li>
+					<li>Sel, poivre</li>
+				</ul>
+
+				<h5>Préparation</h5>
+				<p>1. Retirer les grosses feuilles vertes du choux fleur.</p>
+				<p>2. détailler le choux-fleur en grosses sommités puis les laver dans une eau vinaigrée.</p>
+				<p>3. Cuire les sommités pendant 15mn puis les egoutter.</p>
+				<p>4. Réaliser un roux blanc. Pour cela, faire fondre 30 g de beurre dans une sauteuse puis ajouter la farine en une seule fois. Il faut que la farine se mélange parfaitement au beurre. Attention à ne pas laisser de grumeaux de farine et à ne pas faire brunir le roux blanc, qui comme son nom l'indique, il doit rester blanc. Laisser tiédir.</p>
+				<p>5. Porter le lait à ébulition puis le verser sur le roux blanc puis fouetter sans interruption jusqu'à l'obtention d'une pâte épaisse et homogène</p>
+
+				<p>6. Saler, poivrer et ajouter la noix de muscade. Puis hors du fey incorporer les jaunes d'oeufs un à un Servir bien frais et surtout. Cuir à chaud sous le grill pendant 20mn et RÉGALEZ-VOUS !</p>
+</div>
+</div>
+
+<div id="popup_13" class="popup_block  always_hide"> 	<!-- Code HTML de ma fenêtre avec la relation rel/id !-->
+
+		<h2>Bravo tu a débloqué une recette :</h2> 
+		<p><i><strong>"Mange des kiwis, ils t'aident à guérir tous tes bobos !"</strong></i></p>
+
+		<h3>Confiture kiwi/pommes</h3>
+		<img src="images/recettes/KIWI compote.png" alt="">
+		<p>N'hésite pas à aller voir ton papa ou ta maman pour la préparer en toute sécurité.</p>
+			<button>Voir la recette</button>
+<div class="hide" id="recette">
+	<h5>Ingrédients pour 4 personnes</h5>
+				<ul>
+					<li>2 pommes pelées</li>
+					<li>1 tasse de jus de raisin blanc</li>
+					<li>2 tasses de sucre</li>
+					<li>12 kiwis pelés et coupés en dés</li>
+					<li>1 sachet de pectine à utiliser selon les indications de fabricant</li>
+				</ul>
+
+				<h5>Préparation</h5>
+				<p>1. Dans une grande casserole, mélangez bien les pommes en quartiers, le jus de raisins et le sucre. Portez à ébullition. Baissez le feu et laissez mijoter 20 min. Ajoutez les kiwis et continuez à faire mijoter 20 min. Ajoutez la pectine et bien mélanger. Baissez le feu et laissez mijoter 10 min en mélangeant à plusieurs reprises.</p>
+				<p>2. Vérifiez la cuisson, une goutte de confiture sur une assiette très froide doit figer aussitôt. Sinon faites cuire encore un peu et recommencez l'expérience. Mettez en pots et faites stériliser les pots à l'eau bouillante 7 min. C'est prêt ;)</p>
+
+</div>
+</div>
+
+<div id="popup_14" class="popup_block  always_hide"> 	<!-- Code HTML de ma fenêtre avec la relation rel/id !-->
+
+		<h2>Bravo tu a débloqué une recette :</h2> 
+		<h3>La tartelette aux kiwis</h3>
+		<img src="images/recettes/KIWI tarte.jpg" alt="">
+		<p>N'hésite pas à aller voir ton papa ou ta maman pour la préparer en toute sécurité.</p>
+
+			<button>Voir la recette</button>
+<div class="hide" id="recette">
+	<h5>Ingrédients pour 2 personnes</h5>
+				<ul>
+					<li>20 spéculoos</li>
+					<li>1 tasse de beurre fondu</li>
+					<li>60gr de sucre semoule</li>
+					<li>30gr de farine</li>
+					<li>1 sachet de sucre vanillé</li>
+					<li>1 oeuf</li>
+					<li>10cl de lait</li>
+					<li>2 cuillères à soupe de confiture d'abricots</li>
+					<li>2 kiwis</li>
+				</ul>
+
+				<h5>Préparation</h5>
+				<p>1. Préchauffer le four à 180°C.</p>
+				<p>2. Mixer les spéculoos et les mélanger avec la tasse de beurre fondu. Chemiser 2 moules individuels avec du papier sulfurisé.</p>
+				<p>3. Répartir la pâte de spéculoos dans les moules et tasser avec les doigts pour égaliser.</p>
+				<p>4. Mettre à cuire 10 minutes. Sortir les tartelettes et les laisser refroidir (cela va durcir).</p>
+				<p>5. Préparer la crême patissière :
+	Mixer tout les ingrédients et faire épaissir dans une casserole sur le feu pas trop fort.
+	Répartir sur les fonds de tartellettes et laisser tièdir.</p>
+				<p>6. Eplucher les kiwis et les couper en tranches. Les mettre sur la crème pâtissière.</p>
+				<p>7. Faire chauffer 30 secondes au micro-ondes la confiture, à l'aide d'un pinceau. Napper les kiwis.
+	Laisser au frigo avant de servir.</p>
+</div>
+</div>
+
+<div id="popup_15" class="popup_block"> 	<!-- Code HTML de ma fenêtre avec la relation rel/id !-->
+
+		<h2>Bravo tu a débloqué une recette : </h2>
+		<h3>La tarte kiwi meringuée</h3>
+		<img src="images/recettes/KIWI meringuée.jpg" alt="">
+		<p>N'hésite pas à aller voir ton papa ou ta maman pour la préparer en toute sécurité.</p>
+
+			<button>Voir la recette</button>
+<div class="hide" id="recette">
+	<h5>Ingrédients pour 8 personnes</h5>
+				<ul>
+					<li>1 pâte sablée</li>
+					<li>4/5 kiwis</li>
+					<li>Du jus de citron</li>
+					<li>200gr de sucre</li>
+					<li>3 oeufs + 2 blancs d'oeufs</li>
+					<li>1 cuillère à soupe de maizena</li>
+					<li>1/2 cuillère à café de levure</li>
+					<li>2 cuillère à soupe d'arôme de vanille</li>
+					<li>1 pincée de sel</li>
+					<li>10cl d'eau</li>
+				</ul>
+
+				<h5>Préparation</h5>
+				<p>Pour la pâte:
+
+Soit vous prenez une pâte sablée déjà prête ou sinon je vous conseille de vous référer à la recette de la pâte donnée dans la recette "the tarte au citron meringuée"
+
+Faites cuire la pâte à blanc environ 20 minutes à 180°C (thermostat 6).
+
+
+
+Pour la crème:
+
+Épluchez vos kiwis, coupez les extrémités qui ne sont pas toujours agréables à manger ensuite coupez-les en cube. Mettez-les dans une casserole et écrasez-les à la fourchette en laissant des petits bouts mais pour que cela devienne une sorte de pâte (vous pouvez aussi les passez au mixer)
+
+Ajoutez quelques gouttes de citron, 100 g de sucre, la maïzena et l'eau.
+
+Mettez à chauffer à feu doux en tournant régulièrement.
+
+Pendant ce temps-là, prenez les œufs entiers et battez-les, une fois cela fait ajoutez-les à la préparation sur le feu et augmentez ce dernier en tournant régulièrement.
+
+Quand la préparation épaissie enlevez-la du feu.
+
+Mettez la crème sur le fond de tarte cuit.
+
+
+
+Meringue:
+
+Ajouter du sel au blanc d’œuf et les battre.
+
+Quand les œufs sont montés ajouter la levure et le sucre, ainsi que la vanille.
+
+Battez à nouveau la préparation de façon à ce qu'elle reste assez ferme.
+
+Recouvrez la tarte avec la meringue et la faire cuire 15 min à 150°C (thermostat 5).
+
+Je vous conseille de la laisser refroidir puis de la mettre au frais et après de passer à la dégustation. Là, pas d'indications particulières </p>
+
+</div>
+</div>
+
+
+<div id="popup_16" class="popup_block  always_hide"> 	<!-- Code HTML de ma fenêtre avec la relation rel/id !-->
+
+		<h2>Bravo tu a débloqué une recette :</h2> 
+		<p><i><strong>"Mange des radis pour être au top de ta forme !"</strong></i></p>
+
+		<h3>Salade de Cottage cheese au Surimi et radis roses !</h3>
+		<img src="images/recettes/RADIS surimi.jpg" alt="">
+		<p>N'hésite pas à aller voir ton papa ou ta maman pour la préparer en toute sécurité.</p>
+			<button>Voir la recette</button>
+<div class="hide" id="recette">
+	<h5>Ingrédients</h5>
+				<ul>
+					<li>180g de miettes ou de râpé de surimi</li>
+					<li>2 pots de cottage cheese de 200 g</li>
+					<li>1 botte de radis roses (environ 200 g de radis)</li>
+					<li>1 jus et 1/2 de citron</li>
+					<li>Sel, poivre</li>
+				</ul>
+
+				<h5>Préparation</h5>
+				<p>1. Laver les radis roses, puis les couper en fines rondelles.</p>
+				<p>2. Dans un  bol, verser le jus de citron dans les radis pour les faire mariner, entre 10 minutes et 1 heure.</p>
+				<p>3. Dans un autre bol, mélanger le cottage cheese et le surimi.</p>
+				<p>4. Puis mélanger les radis roses marinés et le jus de citron, avec le cottage cheese et le surimi.</p>
+				<p>5. Saler, poivrer. Servir bien frais et surtout RÉGALEZ-VOUS !</p>
+</div>
+</div>
+
+<div id="popup_17" class="popup_block  always_hide"> 	<!-- Code HTML de ma fenêtre avec la relation rel/id !-->
+
+		<h2>Bravo tu a débloqué une recette :</h2> 
+		<h3>Radis fourés au fromage frais</h3>
+		<img src="images/recettes/RADIS farcis.jpg" alt="">
+		<p>N'hésite pas à aller voir ton papa ou ta maman pour la préparer en toute sécurité.</p>
+
+			<button>Voir la recette</button>
+<div class="hide" id="recette">
+	<h5>Ingrédients pour 6 personnes</h5>
+				<ul>
+					<li>2 bottes de radis</li>
+					<li>200 g de fromage frais</li>
+					<li>1 bouquet de persil</li>
+					<li>1 gousse d'ail</li>
+					<li>2 c. à soupe d'huile d'olive</li>
+					<li>Sel, poivre</li>
+				</ul>
+
+				<h5>Préparation</h5>
+				<p>Lavez, séchez, effeuillez et hachez le persil. Pelez et hachez l’ail. Mixez le fromage frais avec l’huile d’olive, le persil, sel et poivre. Réservez.
+
+Epluchez et lavez les radis. Coupez-les aux trois quarts de leur hauteur. Réservez les chapeaux.
+Déposez une petite cuillère de fromage frais sur les radis.
+
+Remettez les chapeaux et posez les radis dans un plat. Servez frais.</p>
+</div>
+</div>
+
+<div id="popup_18" class="popup_block  always_hide"> 	<!-- Code HTML de ma fenêtre avec la relation rel/id !-->
+
+		<h2>Bravo tu a débloqué une recette :</h2> 
+		<h3>L'incroyable tarte aux radis et fromage frais</h3>
+		<img src="images/recettes/RADIS tarte.jpg" alt="">
+		<p>N'hésite pas à aller voir ton papa ou ta maman pour la préparer en toute sécurité.</p>
+
+			<button>Voir la recette</button>
+<div class="hide" id="recette">
+	<h5>Ingrédients pour 3 à 4 personnes</h5>
+				<ul>
+					<li>2 cuillères à soupe de vinaigre balsamique</li>
+					<li>1 cuillère à soupe de persil</li>
+					<li>Des cornichons</li>
+					<li>1 cuillère à soupe d'échalottes</li>
+					<li>1 cuillère à soupe de câpres</li>
+					<li>1 oeuf</li>
+					<li>150gr de radis roses</li>
+					<li>2 pâtes brisées</li>
+					<li>150gr de St-Môret</li>
+					<li>Sel, poivre</li>
+				</ul>
+
+				<h5>Préparation</h5>
+				<p>Piquez la pâte brisée et découpez 4 disques de 10 cm de diamètre. Enfournez à 180°c pendant 20 min environ.
+
+				Crème au St Môret :
+					Mélangez au St  Môret les câpres, les cornichons, les échalotes, les herbes fraîches et l’œuf dur. Nettoyez et coupez les radis avec une mandoline. Masquez à l’aide d’une cuillère les disques de pâte puis rangez harmonieusement les tranches de radis. Servez avec un trait de vinaigrette et quelques herbes et fleurs.</p>
+</div>
+</div>
+
+</aside>
+
+<script src="scripts/main.js"></script>	
+
+</body>
+</html>
