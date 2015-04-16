@@ -160,7 +160,8 @@ $('body').on('click', 'a.close, #fade', function() { //Au clic sur le body...
     });
 
 
-// Musique de fond
+// Bruitages
+
 document.getElementById("intro").play();
 function sound()
 {  
