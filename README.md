@@ -1,3 +1,5 @@
+*Projet scolaire pour HETIC*
+
 # Le Jardin des Délices
 Le jeu est accessible à l'adresse suivante : http://alex-berneau.com/hetic/Jardin_des_Delices/
 
