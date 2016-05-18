@@ -1,5 +1,5 @@
 # Le Jardin des Délices
-Le jeu est accéssible à l'adresse suivante : http://alex-berneau.com/hetic/Jardin_des_Delices/
+Le jeu est accessible à l'adresse suivante : http://alex-berneau.com/hetic/Jardin_des_Delices/
 
 ## Objectifs :
 - Réaliser un jeux-vidéo en HTML, CSS, JavaScript et/ou jQuery qui soit à la fois ludique et attractif.
