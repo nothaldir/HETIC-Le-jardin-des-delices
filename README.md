@@ -1,8 +1,6 @@
-# Le-jardin-des-delices
-Projet scolaire @HETIC - P2019 E05
+# Le Jardin des Délices
+Le jeu est accéssible à l'adresse suivante : http://alex-berneau.com/hetic/Jardin_des_Delices/
 
-Le jeu est accessible à l'adressse suivante,
-
-The game is available at the following adress:
-
-http://alex-berneau.com/jardin/final_release/
+## Objectifs :
+- Réaliser un jeux-vidéo en HTML, CSS, JavaScript et/ou jQuery qui soit à la fois ludique et attractif.
+- Développer le jeu pour le rendre aisément modifiable et modulable. (découpage du code, création de librairies…).
