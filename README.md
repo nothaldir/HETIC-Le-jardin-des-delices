@@ -1,4 +1,4 @@
-*Projet scolaire pour @HETIC*
+*Projet scolaire pour @HETIC réalisé en 2015* 
 
 # Le Jardin des Délices
 Le jeu est accessible à l'adresse suivante : http://alex-berneau.com/hetic/H1/Jardin_des_Delices/
